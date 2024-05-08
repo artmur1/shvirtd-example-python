@@ -1,3 +1,9 @@
+# Домашнее задание к занятию 5 «Практическое применение Docker» - `Мурчин Артем`
+
+Dockerfile.python - https://github.com/artmur1/shvirtd-example-python/blob/main/Dockerfile.python
+
+compose.yaml - https://github.com/artmur1/shvirtd-example-python/blob/main/compose.yaml
+
 # shvirtd-example-python
 
 Example Flask-application for docker compose training.
