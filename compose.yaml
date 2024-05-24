@@ -1,57 +1,57 @@
 version: "3"
 include:
   - proxy.yaml
-x-deploy: &deploy-dev
-  deploy:
-    resources:
-      limits:
-        cpus: "1"
-        memory: 512M
-      reservations:
-        memory: 256M
+
 x-env_file: &env_file
   env_file:
     - .env
-x-restart: &restart
-  restart: always 
 
 services:
   mysql:
-    image: mariadb:10.6.4-focal
+    image: mysql:8
     command: "--default-authentication-plugin=mysql_native_password"
+    restart: on-failure
     volumes:
       - db_data:/var/lib/mysql
-    networks: ["backend"]
-    <<: [*deploy-dev, *env_file, *restart]
+    <<: [*env_file]
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=wordpress
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ROOT_HOST="%"
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=12345
+    ports:
+      - 3306:3306
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
 
   web-python:
     build:
       context: .
       dockerfile: Dockerfile.python
+    restart: on-failure
     container_name: web-python
-    networks:
-      backend:
-        ipv4_address: 172.20.0.5
+    environment:
+      - DB_HOST=172.20.0.10
+      - DB_TABLE=requests
+      - DB_USER=root
+      - DB_NAME=db1
+      - DB_PASSWORD=12345
     ports:
       - 5000:5000
     volumes:
       - registry_data:/data
-    restart: on-failure
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
 
 volumes:
   registry_data: {}
   db_data: {}
 
 networks:
-  backend2:
+  backend:
     driver: bridge
     ipam:
-      driver: default
+    #  driver: default
       config:
         - subnet: 172.20.0.0/24
