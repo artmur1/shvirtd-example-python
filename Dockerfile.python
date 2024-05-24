@@ -1,10 +1,18 @@
 FROM python:3.9-slim
 
+ENV DB_HOST=172.20.0.10
+ENV DB_TABLE=requests
+ENV DB_USER=root
+ENV DB_NAME=db1
+ENV DB_PASSWORD=12345
+
 RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt .
 RUN pip install --user -r requirements.txt
 COPY main.py .
+#RUN python main.py
+#ENV PATH=/root/.local:$PATH
 EXPOSE 5000
 ENV PYTHONPATH="$PYTHONPATH:/code"
 CMD ["python", "/code/main.py"]
