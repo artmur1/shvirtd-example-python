@@ -36,8 +36,8 @@ services:
       - DB_USER=root
       - DB_NAME=db1
       - DB_PASSWORD=12345
-    ports:
-      - 5000:5000
+#    ports:
+#      - 5000:5000
     volumes:
       - registry_data:/data
     networks:
