@@ -2,7 +2,7 @@ version: '3.8'
 services:
 
   reverse-proxy:
-    image: haproxy
+    image: mirror.gcr.io/haproxy
     restart: always
     networks:
         backend: {}
@@ -12,7 +12,7 @@ services:
     - ./haproxy/reverse/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:rw 
 
   ingress-proxy:
-    image: nginx:latest
+    image: mirror.gcr.io/nginx:latest
     restart: always
     network_mode: host
     volumes:
