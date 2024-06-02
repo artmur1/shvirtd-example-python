@@ -1,10 +1,10 @@
-FROM python:3.9-slim
+FROM mirror.gcr.io/python:3.9-slim
 
 ENV DB_HOST=mysql
 #ENV DB_TABLE=requests
-ENV DB_USER=root
-ENV DB_NAME=db1
-ENV DB_PASSWORD=12345
+ENV DB_USER=${MYSQL_USER}
+ENV DB_NAME=${MYSQL_DATABASE}
+ENV DB_PASSWORD=${MYSQL_PASSWORD}
 
 RUN mkdir /code
 WORKDIR /code
