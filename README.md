@@ -32,7 +32,7 @@ See 'snap info docker' for additional versions.
 
 ## Решение 1
 
-
+Создал файл Dockerfile.python для сборки данного проекта - https://github.com/artmur1/shvirtd-example-python/blob/main/Dockerfile.python
 
 ---
 ### ВНИМАНИЕ!
@@ -64,7 +64,9 @@ See 'snap info docker' for additional versions.
 
 ## Решение 3
 
+Скриншот sql-запроса:
 
+![alt text](https://github.com/artmur1/shvirtd-example-python/blob/main/img/16-5-3-01.png)
 
 ## Задача 4
 1. Запустите в Yandex Cloud ВМ (вам хватит 2 Гб Ram).
@@ -76,7 +78,17 @@ See 'snap info docker' for additional versions.
 
 ## Решение 4
 
+Sql-запрос:
 
+![alt text](https://github.com/artmur1/shvirtd-example-python/blob/main/img/16-5-4-01.png)
+
+Скриншот с сервера:
+
+![alt text](https://github.com/artmur1/shvirtd-example-python/blob/main/img/16-5-4-02.png)
+
+bash-скрипт - https://github.com/artmur1/shvirtd-example-python/blob/main/img/script.sh
+
+Ссылка на fork-репозиторий - https://github.com/artmur1/shvirtd-example-python
 
 ## Задача 5 (*)
 1. Напишите и задеплойте на вашу облачную ВМ bash скрипт, который произведет резервное копирование БД mysql в директорию "/opt/backup" с помощью запуска в сети "backend" контейнера из образа ```schnitzler/mysqldump``` при помощи ```docker run ...``` команды. Подсказка: "документация образа."
@@ -100,7 +112,7 @@ See 'snap info docker' for additional versions.
 Запустите ваше python-приложение с помощью runC, не используя docker или containerd.  
 Предоставьте скриншоты  действий .
 
-# Доработка от 24.05.2024 г.
+# Доработка старая от 24.05.2024 г. (не актуально на 02.06.2024)
 
 compose.yaml собрался без ошибок. На скриншоте видно что работает 4 контейнера.
 
